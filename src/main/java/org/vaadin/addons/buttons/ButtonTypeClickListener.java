@@ -14,21 +14,36 @@
  *    limitations under the License.
  */
 
-package org.vaadin.addons;
+package org.vaadin.addons.buttons;
 
-import com.vaadin.ui.Window;
-import javafx.scene.control.ButtonType;
+import org.vaadin.addons.window.DialogWindow;
 
 /**
  * Created by Dangl on 21.04.2017.
  */
-public class Dialogs {
+public class ButtonTypeClickListener {
 
-    /**
-     * Keeping the Reference to the Dialog Window
-     */
-    private Window window;
+    private ButtonType type;
+    private DialogWindow window;
 
-    public Dialogs() {
+    public ButtonTypeClickListener(ButtonType type, DialogWindow window) {
+        this.type = type;
+        this.window = window;
+    }
+
+    public ButtonType getType() {
+        return type;
+    }
+
+    public void setType(ButtonType type) {
+        this.type = type;
+    }
+
+    public DialogWindow getWindow() {
+        return window;
+    }
+
+    public void setWindow(DialogWindow window) {
+        this.window = window;
     }
 }
