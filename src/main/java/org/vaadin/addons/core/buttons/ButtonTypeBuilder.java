@@ -14,9 +14,11 @@
  *    limitations under the License.
  */
 
-package org.vaadin.addons.buttons;
+package org.vaadin.addons.core.buttons;
 
 import com.vaadin.server.Resource;
+
+import java.util.stream.Stream;
 
 /**
  * Created by Dangl on 21.04.2017.
@@ -29,35 +31,74 @@ public class ButtonTypeBuilder {
         current = new ButtonType();
     }
 
+    /**
+     * Create button type builder.
+     *
+     * @return the button type builder
+     */
     public static ButtonTypeBuilder create() {
         return new ButtonTypeBuilder();
     }
 
+    /**
+     * With caption button type builder.
+     *
+     * @param caption the caption
+     * @return the button type builder
+     */
     public ButtonTypeBuilder withCaption(String caption) {
         current.setCaption(caption);
         return this;
     }
 
+    /**
+     * With icon button type builder.
+     *
+     * @param icon the icon
+     * @return the button type builder
+     */
     public ButtonTypeBuilder withIcon(Resource icon) {
         current.setIcon(icon);
         return this;
     }
 
+    /**
+     * With description button type builder.
+     *
+     * @param description the description
+     * @return the button type builder
+     */
     public ButtonTypeBuilder withDescription(String description) {
         current.setDescription(description);
         return this;
     }
 
-    public ButtonTypeBuilder withClickListener(ButtonTypeClickListener listener) {
-        current.setListener(listener);
+    public ButtonTypeBuilder withButtonAction(ButtonAction action) {
+        current.getActions().add(action);
         return this;
     }
 
+    public ButtonTypeBuilder wihtButtonActions(ButtonAction... actions) {
+        Stream.of(actions).forEach(this::withButtonAction);
+        return this;
+    }
+
+    /**
+     * With style button type builder.
+     *
+     * @param styleValues the style values
+     * @return the button type builder
+     */
     public ButtonTypeBuilder withStyle(String styleValues) {
         current.setStyle(styleValues);
         return this;
     }
 
+    /**
+     * Build button type.
+     *
+     * @return the button type
+     */
     public ButtonType build() {
         return current;
     }

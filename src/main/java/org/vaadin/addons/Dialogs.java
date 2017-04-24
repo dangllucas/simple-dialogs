@@ -16,8 +16,9 @@
 
 package org.vaadin.addons;
 
-import com.vaadin.ui.Window;
-import javafx.scene.control.ButtonType;
+import org.vaadin.addons.core.types.DialogType;
+import org.vaadin.addons.core.window.builder.CustomDialogBuilder;
+import org.vaadin.addons.core.window.builder.PredefinedDialogBuilder;
 
 /**
  * Created by Dangl on 21.04.2017.
@@ -25,10 +26,29 @@ import javafx.scene.control.ButtonType;
 public class Dialogs {
 
     /**
-     * Keeping the Reference to the Dialog Window
+     * Instantiates a new Dialogs.
      */
-    private Window window;
-
-    public Dialogs() {
+    private Dialogs() {
     }
+
+    public static PredefinedDialogBuilder createInfo() {
+        return new PredefinedDialogBuilder(DialogType.INFORMATION);
+    }
+
+    public static PredefinedDialogBuilder createWarning() {
+        return new PredefinedDialogBuilder(DialogType.WARNING);
+    }
+
+    public static PredefinedDialogBuilder createError() {
+        return new PredefinedDialogBuilder(DialogType.ERROR);
+    }
+
+    public static PredefinedDialogBuilder createConfirmation() {
+        return new PredefinedDialogBuilder(DialogType.CONFIRMATION);
+    }
+
+    public static CustomDialogBuilder createCustom() {
+        return new CustomDialogBuilder();
+    }
+
 }
